@@ -1,6 +1,5 @@
 import { Sequelize } from "sequelize";
-import { dbConfig } from "./config";
-import Actor from "../models/actor";
+import { dbConfig } from "./db-config";
 
 const sequelize = new Sequelize(
   dbConfig.DB_NAME,
