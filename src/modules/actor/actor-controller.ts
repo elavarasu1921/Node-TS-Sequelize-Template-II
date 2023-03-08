@@ -18,9 +18,12 @@ export const addActor = async (req: Request, res: Response) => {
   //   },
   // };
   await fromServ.addActor();
-  const permission = ac.can(Roles.EMPLOYER).readAny(Resources.VIDEO);
-  const permission2 = ac.can(Roles.EMPLOYER).readOwn(Resources.VIDEO);
-  console.log(permission.granted);
-  console.log(permission2.granted);
-  res.json({ data: "added" });
+  // const permission = ac.can(Roles.EMPLOYER).readAny(Resources.VIDEO);
+  // const permission2 = ac.can(Roles.EMPLOYER).readOwn(Resources.VIDEO);
+  // console.log(permission.granted);
+  // console.log(permission2.granted);
+  setTimeout(() => {
+    if (req.timedout) return;
+    res.json({ data: "added" });
+  }, 2000);
 };

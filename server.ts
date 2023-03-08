@@ -8,10 +8,14 @@ dotenv.config();
 const PORT = process.env.PORT || 3000;
 
 (async () => {
-  await sequelize.sync({ force: true });
-  console.log(sequelize.models);
-  console.log("All models were synchronized successfully.");
-  app.listen(PORT, () => {
-    console.log(`Server listening at: http://localhost:${PORT}`);
-  });
+  try {
+    await sequelize.sync({ force: true });
+    // console.log(sequelize.models);
+    app.listen(PORT, () => {
+      console.log(`Server listening at: http://localhost:${PORT}`);
+    });
+  } catch (err) {
+    console.log("Database not connected");
+    throw err;
+  }
 })();
